@@ -5,6 +5,7 @@ import controllers.CarController;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -14,20 +15,31 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
+    BufferedImage saabImage;
+    BufferedImage scaniaImage;
     // To keep track of a singel cars position
     Point volvoPoint = new Point();
 
-    // TODO: Make this genereal for all cars
-    public void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-    }
+    ArrayList<BufferedImage> allImages = new ArrayList<>();
+    ArrayList<Point> allPoints = new ArrayList<>();
 
+    public void addCar(Point carPoint, BufferedImage carImage){
+        allPoints.add(carPoint);
+        allImages.add(carImage);
+    }
+    // TODO: Make this general for all cars
+    public void moveit(int x, int y) {
+        for (Point point : allPoints) {
+            point.x = x;
+            point.y = y;
+        }
+    }
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+        addCar(volvoPoint,volvoImage);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "view.pics" part if running outside of IntelliJ and
@@ -37,6 +49,7 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+
         } catch (IOException ex)
         {
             ex.printStackTrace();
