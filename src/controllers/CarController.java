@@ -47,6 +47,14 @@ public class CarController {
         cc.timer.start();
     }
 
+    public void setTurboOn() {
+        this.setTurboOn();
+    }
+
+    public void setTurboOff() {
+        this.setTurboOff();
+    }
+
     /* Each step the TimerListener moves all the cars in the list and tells the
     * view to update its images. Change this method to your needs.
     * */
@@ -83,4 +91,5 @@ public class CarController {
             car.setTurboOn();
         }
     }
+
 }
