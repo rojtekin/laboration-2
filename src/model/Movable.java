@@ -1,3 +1,5 @@
+package model;
+
 /**
  * A class with this interface should have a move, turn left and turn right method
  */

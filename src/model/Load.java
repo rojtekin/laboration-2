@@ -1,3 +1,5 @@
+package model;
+
 /**
  * A class with this interface should be able to load loadable vehicles
  */
