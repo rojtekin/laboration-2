@@ -60,6 +60,14 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getPositionX());
                 int y = (int) Math.round(car.getPositionY());
+                if (car.getPositionY() > CarView.getWorldY_max() - 240
+                        || car.getPositionY() < 0
+                        ||car.getPositionX() > CarView.getWorldX_max()
+                        || car.getPositionX() < 0){
+                    car.turnLeft();
+                    car.turnLeft();
+                }
+
                 frame.drawPanel.moveit(x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();

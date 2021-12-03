@@ -45,6 +45,14 @@ public class CarView extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+    public static double getWorldX_max() {
+        return X;
+    }
+
+    public static double getWorldY_max() {
+        return Y;
+    }
+
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
