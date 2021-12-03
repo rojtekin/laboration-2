@@ -84,5 +84,10 @@ public class CarController {
             car.setTurboOn();
         }
     }
-
+    // Calls setTurboOn on all Saab95 cars
+    public void setTurboOff(){
+        for (Saab95 car : Saab95Cars){
+            car.setTurboOff();
+        }
+    }
 }
