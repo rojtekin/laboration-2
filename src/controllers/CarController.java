@@ -41,6 +41,7 @@ public class CarController {
         cc.Saab95Cars.add(saabCar);
         Scania scaniaCar = new Scania();
         cc.ScaniaCars.add(scaniaCar);
+        cc.cars.add(scaniaCar);
 
 
         // Start a new view and send a reference of self
