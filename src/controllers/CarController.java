@@ -67,4 +67,12 @@ public class CarController {
             car.gas(gas);
         }
     }
+    // Calls the gas method for each car once
+    public void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars
+        ) {
+            car.brake(brake);
+        }
+    }
 }
