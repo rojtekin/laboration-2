@@ -27,7 +27,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-
+    ArrayList<Saab95> carsWithTurbo = new ArrayList<>();
     //methods:
 
     public static void main(String[] args) {
@@ -35,6 +35,10 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        Saab95 saabCar = new Saab95();
+        cc.cars.add(saabCar);
+        cc.carsWithTurbo.add(saabCar);
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -66,12 +70,16 @@ public class CarController {
             car.gas(gas);
         }
     }
-    // Calls the gas method for each car once
+    // Calls the break method for each car once
     public void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Car car : cars
-        ) {
+        for (Car car : cars) {
             car.brake(brake);
+        }
+    }
+    public void setTurboOn(){
+        for (Saab95 car : carsWithTurbo){
+            car.setTurboOn();
         }
     }
 }
