@@ -28,6 +28,7 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
     ArrayList<Saab95> Saab95Cars = new ArrayList<>();
+    ArrayList<Scania> ScaniaCars = new ArrayList<>();
     //methods:
 
     public static void main(String[] args) {
@@ -38,6 +39,8 @@ public class CarController {
         Saab95 saabCar = new Saab95();
         cc.cars.add(saabCar);
         cc.Saab95Cars.add(saabCar);
+        Scania scaniaCar = new Scania();
+        cc.ScaniaCars.add(scaniaCar);
 
 
         // Start a new view and send a reference of self
@@ -84,10 +87,22 @@ public class CarController {
             car.setTurboOn();
         }
     }
-    // Calls setTurboOn on all Saab95 cars
+    // Calls setTurboOff on all Saab95 cars
     public void setTurboOff(){
         for (Saab95 car : Saab95Cars){
             car.setTurboOff();
+        }
+    }
+    // Calls raisePlatform on all Scania cars
+    public void raisePlatform(){
+        for (Scania car : ScaniaCars){
+            car.raisePlatform(10);
+        }
+    }
+    // Calls raisePlatform on all Scania cars
+    public void lowerPlatform(){
+        for (Scania car : ScaniaCars){
+            car.lowerPlatform(10);
         }
     }
 }
