@@ -17,7 +17,7 @@ public class DrawPanel extends JPanel{
     BufferedImage scaniaImage;
     // To keep track of a singel cars position
     Point volvoPoint = new Point();
-    Point saabPoint = new Point();
+    Point saab95Point = new Point();
     Point scaniaPoint = new Point();
 
     ArrayList<BufferedImage> allImages = new ArrayList<>();
@@ -40,6 +40,8 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         addCar(volvoPoint,volvoImage);
+        addCar(saab95Point,saab95Image);
+        addCar(scaniaPoint,scaniaImage);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "view.pics" part if running outside of IntelliJ and
