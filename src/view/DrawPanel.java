@@ -24,6 +24,7 @@ public class DrawPanel extends JPanel{
     ArrayList<Point> allPoints = new ArrayList<>();
 
     public void addCar(Point carPoint, BufferedImage carImage){
+
         allPoints.add(carPoint);
         allImages.add(carImage);
     }
@@ -39,9 +40,6 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        addCar(volvoPoint,volvoImage);
-        addCar(saab95Point,saab95Image);
-        addCar(scaniaPoint,scaniaImage);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "view.pics" part if running outside of IntelliJ and
@@ -53,6 +51,9 @@ public class DrawPanel extends JPanel{
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            addCar(volvoPoint,volvoImage);
+            addCar(saab95Point,saab95Image);
+            addCar(scaniaPoint,scaniaImage);
 
         } catch (IOException ex)
         {
@@ -66,6 +67,14 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        int i = 0;
+        while(allPoints.size() > i){
+            BufferedImage image = allImages.get(i);
+            int x = allPoints.get(i).x + 100*i;
+            int y = allPoints.get(i).y;
+
+            g.drawImage(image, x, y, null); // see javadoc for more info on the parameters
+            i++;
+        }
     }
 }
