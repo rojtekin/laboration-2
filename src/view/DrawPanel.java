@@ -1,5 +1,10 @@
 package view;
 
+import model.Car;
+import model.Saab95;
+import model.Scania;
+import model.Volvo240;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -29,10 +34,18 @@ public class DrawPanel extends JPanel{
         allImages.add(carImage);
     }
     // TODO: Make this general for all cars
-    public void moveit(int x, int y) {
-        for (Point point : allPoints) {
-            point.x = x;
-            point.y = y;
+    public void moveit(int x, int y, Car car) {
+        if (car instanceof Volvo240) {
+            volvoPoint.x = x;
+            volvoPoint.y = y;
+        }
+        if (car instanceof Saab95){
+            saab95Point.x = x;
+            saab95Point.y = y;
+        }
+        if (car instanceof Scania){
+            scaniaPoint.x = x;
+            scaniaPoint.y = y;
         }
     }
     // Initializes the panel and reads the images
@@ -45,7 +58,7 @@ public class DrawPanel extends JPanel{
             // You can remove the "view.pics" part if running outside of IntelliJ and
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-            
+
             // Rememember to rightclick src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
             // if you are starting in IntelliJ.
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
