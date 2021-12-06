@@ -1,7 +1,5 @@
 package view;
 
-import controllers.CarController;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,7 +13,7 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
-    BufferedImage saabImage;
+    BufferedImage saab95Image;
     BufferedImage scaniaImage;
     // To keep track of a singel cars position
     Point volvoPoint = new Point();
@@ -50,7 +48,9 @@ public class DrawPanel extends JPanel{
 
             // Rememember to rightclick src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
             // if you are starting in IntelliJ.
+            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
 
         } catch (IOException ex)
         {
