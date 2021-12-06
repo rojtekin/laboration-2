@@ -45,7 +45,7 @@ public class DrawPanel extends JPanel{
             // You can remove the "view.pics" part if running outside of IntelliJ and
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
+            
             // Rememember to rightclick src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
             // if you are starting in IntelliJ.
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
