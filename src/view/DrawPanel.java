@@ -34,7 +34,8 @@ public class DrawPanel extends JPanel{
         allImages.add(carImage);
     }
     // TODO: Make this general for all cars
-    public void moveit(int x, int y, Car car) {
+    public void moveit(int x, int y, Car car) { // när vi lyckas koppla bilarnas objekt med deras bilder i världen kan man
+        // göra en bra generaliserad version av detta.
         if (car instanceof Volvo240) {
             volvoPoint.x = x;
             volvoPoint.y = y;
