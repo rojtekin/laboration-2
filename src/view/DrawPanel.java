@@ -84,7 +84,7 @@ public class DrawPanel extends JPanel{
         int i = 0;
         while(allPoints.size() > i){
             BufferedImage image = allImages.get(i);
-            int x = allPoints.get(i).x + 100*i;
+            int x = allPoints.get(i).x;
             int y = allPoints.get(i).y;
 
             g.drawImage(image, x, y, null); // see javadoc for more info on the parameters
