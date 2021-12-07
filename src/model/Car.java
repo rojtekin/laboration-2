@@ -33,8 +33,8 @@ public abstract class Car implements Movable {
         this.loadable = loadable;
         positionY = 0;
         positionX = 0;
-        rotationX = 1;
-        rotationY = 0;
+        rotationX = 0;
+        rotationY = 1;
 
     }
 

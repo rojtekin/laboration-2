@@ -98,6 +98,16 @@ public class CarController {
             car.brake(brake);
         }
     }
+    public void startEngine(){
+        for (Car car : cars){
+            car.startEngine();
+        }
+    }
+    public void stopEngine(){
+        for (Car car : cars){
+            car.stopEngine();
+        }
+    }
     // Calls setTurboOn on all Saab95 cars
     public void setTurboOn(){
         for (Saab95 car : Saab95Cars){
