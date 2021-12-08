@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-// This panel represent the animated part of the view with the car images.
+// This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
 
@@ -60,7 +60,7 @@ public class DrawPanel extends JPanel{
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
 
-            // Rememember to rightclick src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
+            // Remember to right-click src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
             // if you are starting in IntelliJ.
             saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
