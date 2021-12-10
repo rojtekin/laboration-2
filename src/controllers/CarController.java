@@ -39,19 +39,23 @@ public class CarController {
         Volvo240 volvo240 = new Volvo240(0,0);
         cc.cars.add(volvo240);
 
-        Saab95 saabCar = new Saab95(100,0);
+        Saab95 saabCar = new Saab95(0,0);
         cc.cars.add(saabCar);
         cc.Saab95Cars.add(saabCar);
 
-        Scania scaniaCar = new Scania(200, 0);
+        Scania scaniaCar = new Scania(0, 0);
         cc.ScaniaCars.add(scaniaCar);
         cc.cars.add(scaniaCar);
 
-    //    for (Car car : cc.cars){
-    //        double i = 0;
-    //        car.setPositionX(100*i);      // this doesnt work as intended
-    //        i = i+1;
-    //    }
+
+        double i = 0;
+        while (cc.cars.size() > i ) {
+            int a = (int) i;
+            Car car = cc.cars.get(a);
+            car.setPositionX(100*i);      // this doesnt work as intended
+            i = i+1;
+        }
+
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
 
