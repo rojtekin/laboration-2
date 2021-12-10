@@ -52,7 +52,7 @@ public class CarController {
         while (cc.cars.size() > i ) {
             int a = (int) i;
             Car car = cc.cars.get(a);
-            car.setPositionX(100*i);      // this doesnt work as intended
+            car.setPositionX(100*i);
             i = i+1;
         }
 
