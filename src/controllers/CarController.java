@@ -6,6 +6,7 @@ import view.CarView;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /*
@@ -35,16 +36,14 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        Volvo240 volvo240 = new Volvo240();
+        Volvo240 volvo240 = new Volvo240(0,0);
         cc.cars.add(volvo240);
 
-        Saab95 saabCar = new Saab95();
-        saabCar.setPositionX(100);
+        Saab95 saabCar = new Saab95(100,0);
         cc.cars.add(saabCar);
         cc.Saab95Cars.add(saabCar);
 
-        Scania scaniaCar = new Scania();
-        scaniaCar.setPositionX(200);
+        Scania scaniaCar = new Scania(200, 0);
         cc.ScaniaCars.add(scaniaCar);
         cc.cars.add(scaniaCar);
 
@@ -77,10 +76,11 @@ public class CarController {
                     car.turnLeft();
                     car.turnLeft();
                 }
-                frame.drawPanel.moveit(x, y, car);
+                BufferedImage image = car.getImage();
+                frame.drawPanel.moveit(x, y, image);
                 // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
             }
+            frame.drawPanel.repaint();
         }
     }
 

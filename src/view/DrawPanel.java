@@ -18,36 +18,45 @@ public class DrawPanel extends JPanel{
 
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
-    BufferedImage saab95Image;
-    BufferedImage scaniaImage;
-    // To keep track of a singel cars position
-    Point volvoPoint = new Point();
-    Point saab95Point = new Point();
-    Point scaniaPoint = new Point();
 
-    ArrayList<BufferedImage> allImages = new ArrayList<>();
-    ArrayList<Point> allPoints = new ArrayList<>();
-
-    public void addCar(Point carPoint, BufferedImage carImage){
-
-        allPoints.add(carPoint);
-        allImages.add(carImage);
+    {
+        try {
+            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    BufferedImage saab95Image;
+    {
+        try {
+            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    BufferedImage scaniaImage;
+    {
+        try {
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    ;
+    // To keep track of a singel cars position
+
+    ArrayList<ObjektToDraw> allObjektsToDraw = new ArrayList<>();
+
     // TODO: Make this general for all cars
-    public void moveit(int x, int y, Car car) { // när vi lyckas koppla bilarnas objekt med deras bilder
+    public void moveit(int x, int y, BufferedImage image) { // när vi lyckas koppla bilarnas objekt med deras bilder
         // i världen kan man göra en bra generaliserad version av detta.
-        if (car instanceof Volvo240) {
-            volvoPoint.x = x;
-            volvoPoint.y = y;
-        }
-        if (car instanceof Saab95){
-            saab95Point.x = x;
-            saab95Point.y = y;
-        }
-        if (car instanceof Scania){
-            scaniaPoint.x = x;
-            scaniaPoint.y = y;
-        }
+        ObjektToDraw draw = new ObjektToDraw(new Point(x,y), image);
+        allObjektsToDraw.add(draw);
+
+
     }
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -55,24 +64,12 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
         // Print an error message in case file is not found with a try/catch block
-        try {
-            // You can remove the "view.pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+        // You can remove the "view.pics" part if running outside of IntelliJ and
+        // everything is in the same main folder.
+        // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
 
-            // Remember to right-click src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
-            // if you are starting in IntelliJ.
-            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-            addCar(volvoPoint,volvoImage);
-            addCar(saab95Point,saab95Image);
-            addCar(scaniaPoint,scaniaImage);
-
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
-        }
+        // Remember to right-click src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
+        // if you are starting in IntelliJ.
 
     }
 
@@ -82,13 +79,14 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int i = 0;
-        while(allPoints.size() > i){
-            BufferedImage image = allImages.get(i);
-            int x = allPoints.get(i).x;
-            int y = allPoints.get(i).y;
+        while(allObjektsToDraw.size() > i){
+            BufferedImage image = allObjektsToDraw.get(i).getImage();
+            int x = allObjektsToDraw.get(i).getPoint().x;
+            int y = allObjektsToDraw.get(i).getPoint().y;
 
             g.drawImage(image, x, y, null); // see javadoc for more info on the parameters
             i++;
         }
+        allObjektsToDraw.clear();
     }
 }

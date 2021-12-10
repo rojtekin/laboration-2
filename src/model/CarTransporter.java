@@ -29,8 +29,8 @@ public class CarTransporter extends Car implements Load{
      * creates a CarTransporter
      * @param max_capacity the maximum amount of cars the transporter can carry.
      */
-    public CarTransporter(int max_capacity){
-        super(2,
+    public CarTransporter(int max_capacity, double X, double Y){
+        super(X, Y,2,
                 Color.GRAY,
                 100,
                 "UltimateCarCarryService",

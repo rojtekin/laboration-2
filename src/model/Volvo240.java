@@ -15,8 +15,8 @@ public class Volvo240 extends Car {
     /**
      * Creates a Volvo240
      */
-    public Volvo240() {
-        super(4,
+    public Volvo240(double X, double Y) {
+        super(X, Y,4,
                 Color.black,
                 100,
                 "Volvo240",

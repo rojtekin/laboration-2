@@ -1,6 +1,11 @@
 package model;
 
+import view.DrawPanel;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * A representation of a vehicle
@@ -16,6 +21,7 @@ public abstract class Car implements Movable {
     private double rotationX;
     private double rotationY;
     private boolean loadable;
+    private BufferedImage image;
 
     /**
      * Creates a car from given attributes
@@ -25,16 +31,17 @@ public abstract class Car implements Movable {
      * @param modelName Name of the subclass
      * @param loadable If the vehicle is able to get loaded onto things
      */
-    public Car(int nrDoors, Color color, int enginePower, String modelName, boolean loadable){
+    public Car(double positionX, double positionY,int nrDoors, Color color, int enginePower, String modelName, boolean loadable){
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
         this.loadable = loadable;
-        positionY = 0;
-        positionX = 0;
+        this.positionY = positionY;
+        this.positionX = positionX;
         rotationX = 0;
         rotationY = 1;
+        setImage(loadImage(getModelName()));
 
     }
 
@@ -52,6 +59,17 @@ public abstract class Car implements Movable {
         return rotationX;
     }
 
+     void setImage(BufferedImage image){
+        this.image = image;
+    }
+
+    /**
+     * gets the image of the car
+     * @return Returns the image
+     */
+    public BufferedImage getImage(){
+        return image;
+    }
     /**
      * gets Y-axis rotation
      * @return Returns rotationY
@@ -102,8 +120,22 @@ public abstract class Car implements Movable {
      * checks if a car is loadable to a loading truck
      * @return Returns True
      */
-    public boolean isLoadable() { // TODO: 2021-11-29 tests 
+    public boolean isLoadable() { // TODO: 2021-11-29 tests
         return loadable;
+    }
+
+    protected BufferedImage loadImage(String modelName){
+
+        try {
+            return ImageIO.read(DrawPanel.class.getResourceAsStream("/./view/pics/"+ modelName +".jpg")); // doesnt go to file location
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    String getModelName(){
+        return modelName;
     }
 
     /**

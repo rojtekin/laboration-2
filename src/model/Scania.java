@@ -1,6 +1,11 @@
 package model;
 
+import view.DrawPanel;
+
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * A specific subclass of car representing a Scania truck
@@ -13,11 +18,20 @@ public class Scania extends Car {
      */
     private double platform;
 
+    private static BufferedImage scaniaImage;
+    {
+        try {
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("/./view/pics/Scania.jpg"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * Creates a Scania truck
      */
-    public Scania(){
-        super(2,
+    public Scania(double X, double Y){
+        super(X, Y,2,
                 Color.white,
                 100,
                 "Scania",
