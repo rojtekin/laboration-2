@@ -18,15 +18,6 @@ public class Scania extends Car {
      */
     private double platform;
 
-    private static BufferedImage scaniaImage;
-    {
-        try {
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("/./view/pics/Scania.jpg"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     /**
      * Creates a Scania truck
      */

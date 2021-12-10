@@ -17,15 +17,6 @@ public class Saab95 extends Car {
      */
     private boolean turboOn;
 
-    private static BufferedImage saabImage;
-    {
-        try {
-            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("/./view/pics/Saab95.jpg"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     /**
      * Creates a Saab95
      */
