@@ -51,8 +51,7 @@ public class DrawPanel extends JPanel{
     ArrayList<ObjektToDraw> allObjektsToDraw = new ArrayList<>();
 
     // TODO: Make this general for all cars
-    public void moveit(int x, int y, BufferedImage image) { // när vi lyckas koppla bilarnas objekt med deras bilder
-        // i världen kan man göra en bra generaliserad version av detta.
+    public void moveit(int x, int y, BufferedImage image) {
         ObjektToDraw draw = new ObjektToDraw(new Point(x,y), image);
         allObjektsToDraw.add(draw);
 
@@ -63,13 +62,6 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        // Print an error message in case file is not found with a try/catch block
-        // You can remove the "view.pics" part if running outside of IntelliJ and
-        // everything is in the same main folder.
-        // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-        // Remember to right-click src New -> Package -> name: view.pics -> MOVE *.jpg to view.pics.
-        // if you are starting in IntelliJ.
 
     }
 
