@@ -1,7 +1,7 @@
 package view;
 
+import model.*;
 import controllers.CarController;
-
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -9,6 +9,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Math;
 
 
 /**
@@ -20,12 +21,11 @@ import java.awt.event.ActionListener;
  **/
 
 public class CarView extends JFrame{
-    private static final int X = 600;
-    private static final int Y = 600;
 
+    private World world;
     // The controller member
     CarController carC;
-    public DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    public DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -44,17 +44,14 @@ public class CarView extends JFrame{
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-    public static double getWorldX_max() {
-        return X;
-    }
 
-    public static double getWorldY_max() {
-        return Y;
-    }
 
     // Constructor
-    public CarView(String framename, CarController cc){
+    public CarView(String framename, CarController cc, World world){
+        this.world = world;
+        this.drawPanel = new DrawPanel((int)Math.round(world.getWorldX()),(int)Math.round(world.getWorldY()-240));
         this.carC = cc;
+
         initComponents(framename);
     }
 
@@ -63,12 +60,10 @@ public class CarView extends JFrame{
     private void initComponents(String title) {
 
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
+        this.setPreferredSize(new Dimension((int)Math.round(world.getWorldX()),(int)Math.round(world.getWorldY())));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
@@ -96,20 +91,20 @@ public class CarView extends JFrame{
         controlPanel.add(brakeButton, 3);
         controlPanel.add(turboOffButton, 4);
         controlPanel.add(lowerBedButton, 5);
-        controlPanel.setPreferredSize(new Dimension((X/2)+4, 200));
+        controlPanel.setPreferredSize(new Dimension((int)Math.round(world.getWorldX()/2)+4, 200));
         this.add(controlPanel);
         controlPanel.setBackground(Color.CYAN);
 
 
         startButton.setBackground(Color.blue);
         startButton.setForeground(Color.green);
-        startButton.setPreferredSize(new Dimension(X/5-15,200));
+        startButton.setPreferredSize(new Dimension((int)Math.round(world.getWorldX())/5-15,200));
         this.add(startButton);
 
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);
-        stopButton.setPreferredSize(new Dimension(X/5-15,200));
+        stopButton.setPreferredSize(new Dimension((int)Math.round(world.getWorldX())/5-15,200));
         this.add(stopButton);
 
         // This actionListener is for the gas button only

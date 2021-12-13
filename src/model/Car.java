@@ -23,6 +23,7 @@ public abstract class Car implements Movable {
     private boolean loadable;
     private BufferedImage image;
 
+
     /**
      * Creates a car from given attributes
      * @param nrDoors Number of doors
@@ -251,7 +252,6 @@ public abstract class Car implements Movable {
         positionY += getCurrentSpeed() * getRotationY();
 
     }
-
     /**
      * Turns it left
      */
