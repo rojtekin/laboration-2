@@ -15,37 +15,6 @@ import javax.swing.*;
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
-
-    // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-
-    {
-        try {
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    BufferedImage saab95Image;
-    {
-        try {
-            saab95Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    BufferedImage scaniaImage;
-    {
-        try {
-            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    ;
     // To keep track of a singel cars position
 
     ArrayList<ObjektToDraw> allObjektsToDraw = new ArrayList<>();
