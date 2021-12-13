@@ -1,5 +1,6 @@
 package controllers;
 
+import Observer.*;
 import model.*;
 import view.CarView;
 import model.World;
@@ -33,6 +34,8 @@ public class CarController{
     // each step between delays.
     private Timer timer = new Timer(delay, new TimerListener());
 
+    ArrayList<Observer> allObservers = new ArrayList<>();
+
     public static void main(String[] args) {
         // Instance of this class
 
@@ -42,36 +45,32 @@ public class CarController{
         Volvo240 volvo240 = new Volvo240(0,0);
         cc.cars.add(volvo240);
 
-        Saab95 saabCar = new Saab95(0,0);
+        Saab95 saabCar = new Saab95(100,0);
         cc.cars.add(saabCar);
         cc.saab95Cars.add(saabCar);
 
-        Scania scaniaCar = new Scania(0, 0);
+        Scania scaniaCar = new Scania(200, 0);
         cc.scaniaCars.add(scaniaCar);
         cc.cars.add(scaniaCar);
 
-        double i = 0;
-        while (cc.cars.size() > i ) {
-            int a = (int) i;
-            Car car = cc.cars.get(a);
-            car.setPositionX(100*i);
-            i = i+1;
-        }
-
         cc.world = new World();
+
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc, cc.world);
 
+        cc.allObservers.add(cc.frame);
         // Start the timer
         cc.timer.start();
     }
+
 
     /* Each step the TimerListener moves all the cars in the list and tells the
      * view to update its images. Change this method to your needs.
      * */
 
-    private class TimerListener implements ActionListener {
+    public class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
 
@@ -83,7 +82,7 @@ public class CarController{
                 frame.drawPanel.moveit(x, y, image);
                 // repaint() calls the paintComponent method of the panel
             }
-            frame.drawPanel.repaint();
+            notifyObserver();
         }
     }
     //methods:
@@ -135,5 +134,17 @@ public class CarController{
         for (Scania car : scaniaCars){
             car.lowerPlatform(10);
         }
+    }
+
+    public void notifyObserver() {
+        for (Observer observer : allObservers){
+            observer.update();
+        }
+    }
+    private void addObserver(Observer observer){
+        allObservers.add(observer);
+    }
+    private void removeObserver(Observer observer){
+        allObservers.remove(observer);
     }
 }

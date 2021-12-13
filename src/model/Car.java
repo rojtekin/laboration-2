@@ -1,5 +1,6 @@
 package model;
 
+import Observer.Observer;
 import view.DrawPanel;
 
 import javax.imageio.ImageIO;

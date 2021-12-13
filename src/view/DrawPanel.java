@@ -1,5 +1,6 @@
 package view;
 
+import Observer.Observer;
 import model.Car;
 import model.Saab95;
 import model.Scania;
@@ -14,7 +15,7 @@ import javax.swing.*;
 
 // This panel represents the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements Observer {
     // To keep track of a singel cars position
 
     ArrayList<ObjektToDraw> allObjektsToDraw = new ArrayList<>();
@@ -49,5 +50,10 @@ public class DrawPanel extends JPanel{
             i++;
         }
         allObjektsToDraw.clear();
+    }
+
+    @Override
+    public void update() {
+        repaint();
     }
 }

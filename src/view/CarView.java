@@ -1,5 +1,6 @@
 package view;
 
+import Observer.Observer;
 import model.*;
 import controllers.CarController;
 
@@ -20,7 +21,7 @@ import java.lang.Math;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class CarView extends JFrame{
+public class CarView extends JFrame implements Observer {
 
     private World world;
     // The controller member
@@ -169,5 +170,10 @@ public class CarView extends JFrame{
         this.setVisible(true);
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    @Override
+    public void update() {
+        drawPanel.repaint();
     }
 }
