@@ -58,7 +58,7 @@ public class CarController{
             i = i+1;
         }
 
-        cc.world = new World(cc.cars,cc.scaniaCars,cc.saab95Cars);
+        cc.world = new World();
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc, cc.world);

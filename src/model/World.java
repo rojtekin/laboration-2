@@ -14,12 +14,9 @@ public class World {
 
 
 
-    public World(ArrayList<Car> cars,ArrayList<Scania> ScaniaCars,ArrayList<Saab95> Saab95Cars){
+    public World(){
         this.worldX = 600;
         this.worldY = 600;
-        this.ScaniaCars = ScaniaCars;
-        this.cars = cars;
-        this.Saab95Cars = Saab95Cars;
     }
 
     public void wallBounce(Car car){
@@ -30,19 +27,6 @@ public class World {
             car.turnLeft();
             car.turnLeft();
     }}
-
-    public ArrayList<Car> getcars(){
-        return cars;
-    }
-
-    public ArrayList<Saab95> getSaab95Cars() {
-        return Saab95Cars;
-    }
-
-    public ArrayList<Scania> getScaniaCars() {
-        return ScaniaCars;
-    }
-
     public double getWorldX() {
         return worldX;
     }
